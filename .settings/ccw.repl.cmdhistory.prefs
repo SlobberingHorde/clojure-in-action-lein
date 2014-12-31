@@ -1,2 +1,2 @@
-cmdhistory=["(foo)" "(foo \\"Jerry\\")"]
+cmdhistory=["(foo)" "(foo \\"Jerry\\")" "(check-login \\"siva\\" \\"secrets\\")" "(check-login \\"siva\\" \\"test\\")" "(check-login \\"jerry\\" \\n         \\"test\\")" "(doc +)" "(apply + [1 2 3 5 5 6 0])" "(apply + '(2 3 4 5))" "(alphabetically)" "users" "(balance (get users 1))" "(sorter-using username)" "poorest-first" "(poorest-first)" "(poorest-first users)" "(alphabetically users)"]
 eclipse.preferences.version=1
