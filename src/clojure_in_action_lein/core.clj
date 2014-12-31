@@ -86,4 +86,22 @@
 
 
 
+;;section 4.3.2 on multimethods
+(defn fee-amount [percentage user]
+  (float (* 0.01 percentage (:salary user))))
+
+(defmulti affiliate-fee :referrer)
+
+(defmethod affiliate-fee :mint.com [user]
+  (fee-amount 0.03 user))
+
+(defmethod affiliate-fee :google.com [user]
+  (fee-amount 0.01 user))
+
+(defmethod affiliate-fee :default [user]
+  (fee-amount 0.02 user))
+
+(def user-1 {:login "rob" :referrer :mint.com :salary 100000})
+(def user-2 {:login "kyle" :referrer :google.com :salary 90000})
+(def user-3 {:login "celeste" :referrer :yahoo.com :salary 70000})
 
