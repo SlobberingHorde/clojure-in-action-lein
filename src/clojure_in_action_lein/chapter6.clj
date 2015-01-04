@@ -19,3 +19,8 @@
           user (new-user (inc current-number) login budget-amount)]
       (alter all-users assoc login user))))
 
+;; alter takes a ref, a function and its args.
+;; In this case it takes the assoc fn that takes the all-users, and adds the user with the key of login to it
+
+;; adds jerry with a monthly budget of 150.00
+(add-new-user "jerry" 150.00)
