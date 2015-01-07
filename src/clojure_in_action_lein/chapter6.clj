@@ -42,3 +42,20 @@
       st (.getStackTrace e)]
   (println (.getMessage e))
   (println (join "\n" st)))
+
+(clear-agent-errors bad-agent)
+
+;refs are synchronous and coordinated in STM
+;agents are asynchronous and independent in STM
+;atoms are synchronous and independent so no need for transactions
+
+;;example of a watcher to pay attention to mutation
+(def adi (atom 0))
+
+(defn on-change [the-key the-ref old-value new-value]
+ (println "Hey, seeing change from" old-value "to" new-value))
+
+(add-watch adi :adi-watcher on-change)
+
+;(swap! adi inc) ; causes the watch to fire
+;(remove-watch adi :adi-watcher) ; removes the watch from the mutable object
