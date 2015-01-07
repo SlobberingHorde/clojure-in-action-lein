@@ -24,3 +24,21 @@
 
 ;; adds jerry with a monthly budget of 150.00
 (add-new-user "jerry" 150.00)
+
+;; using an agent to update asynchronously
+;; this example sets up a bad scenario
+(def bad-agent (agent 10))
+
+(send bad-agent / 0) ;Causes divide by zero
+(deref bad-agent)
+;;The book implies deref'ing this will give an exception but my test doesn't, it returns the old value
+;; using (agent-errors bad-ref) returns a list of exceptions so that is how to detect it
+(agent-errors bad-agent)
+
+;; prints out the stacktrace, as it were
+(use '[clojure.string :only (join)])
+
+(let [e (first (agent-errors bad-agent))
+      st (.getStackTrace e)]
+  (println (.getMessage e))
+  (println (join "\n" st)))
