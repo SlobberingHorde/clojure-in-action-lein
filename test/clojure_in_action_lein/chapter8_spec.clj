@@ -7,3 +7,7 @@
     (is (= (day-from d) 22))
     (is (= (month-from d) 1))
     (is (= (year-from d) 2009))))
+
+(deftest test-as-string
+ (let [d (date "2009-01-22")]
+   (is (= (as-string d) "2009-01-22"))))
